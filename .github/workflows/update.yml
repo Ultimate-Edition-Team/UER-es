@@ -1,0 +1,23 @@
+name: Update localization files
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Invoke deployment hook
+        uses: distributhor/workflow-webhook@v3
+        with:
+          webhook_url: https://transrepo.ziyuesinicization.site/cbue
+          data: '{ "master_branch": "main" }'
+          
